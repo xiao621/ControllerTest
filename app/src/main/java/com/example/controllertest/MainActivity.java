@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         mb_lotate_right = (Button)findViewById(R.id.button_lotate_right);
         mb_go_backward = (Button)findViewById(R.id.button_go_backward);
 
+        final SocketClientTask socket = new SocketClientTask(this);
+
         mb_go_forward.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -38,12 +40,14 @@ public class MainActivity extends AppCompatActivity {
                     mb_lotate_left.setEnabled(false);
                     mb_lotate_right.setEnabled(false);
                     mb_go_backward.setEnabled(false);
+                    //socket.execute("1");
                 } else if(event.getAction() == MotionEvent.ACTION_UP) {
                     // タッチした指が離れた時の処理を記述
                     mtv_state.setText("停止！");
                     mb_lotate_left.setEnabled(true);
                     mb_lotate_right.setEnabled(true);
                     mb_go_backward.setEnabled(true);
+                    socket.execute("0");
                 }
                 return false;
             }
@@ -58,12 +62,14 @@ public class MainActivity extends AppCompatActivity {
                     mb_go_forward.setEnabled(false);
                     mb_lotate_right.setEnabled(false);
                     mb_go_backward.setEnabled(false);
+                    socket.execute("4");
                 } else if(event.getAction() == MotionEvent.ACTION_UP) {
                     // タッチした指が離れた時の処理を記述
                     mtv_state.setText("停止！");
                     mb_go_forward.setEnabled(true);
                     mb_lotate_right.setEnabled(true);
                     mb_go_backward.setEnabled(true);
+                    socket.execute("0");
                 }
                 return false;
             }
@@ -78,12 +84,14 @@ public class MainActivity extends AppCompatActivity {
                     mb_go_forward.setEnabled(false);
                     mb_lotate_left.setEnabled(false);
                     mb_go_backward.setEnabled(false);
+                    socket.execute("3");
                 } else if(event.getAction() == MotionEvent.ACTION_UP) {
                     // タッチした指が離れた時の処理を記述
                     mtv_state.setText("停止！");
                     mb_go_forward.setEnabled(true);
                     mb_lotate_left.setEnabled(true);
                     mb_go_backward.setEnabled(true);
+                    socket.execute("0");
                 }
                 return false;
             }
@@ -98,12 +106,14 @@ public class MainActivity extends AppCompatActivity {
                     mb_go_forward.setEnabled(false);
                     mb_lotate_left.setEnabled(false);
                     mb_lotate_right.setEnabled(false);
+                    socket.execute("2");
                 } else if(event.getAction() == MotionEvent.ACTION_UP) {
                     // タッチした指が離れた時の処理を記述
                     mtv_state.setText("停止！");
                     mb_go_forward.setEnabled(true);
                     mb_lotate_left.setEnabled(true);
                     mb_lotate_right.setEnabled(true);
+                    socket.execute("0");
                 }
                 return false;
             }
